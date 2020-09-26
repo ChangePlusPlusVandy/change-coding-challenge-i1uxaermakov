@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
+}
+
+button {
+    margin-right: auto;
+    margin-left: auto;
+    width: 10em;
+    padding: 0.9em;
+    border: 0;
+    border-radius: 10px;
+    background-color: #1DA1F2;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-weight: 700;
+}
+
+
+a, a:visited, a:active {
+    color: #1DA1F2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#initialPage {
+    background-color: #1DA1F2;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.leftPane {
+    height: 100vh;
+    width: 50vw;
+    background-color: #1DA1F2;
+    color: #fff;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 50vw;
+    background-color: #fff;
+}
+
+.userNames {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputBox {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15em;
+    padding: 1em;
+    border: 0;
+    border-radius:10px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.12);
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 3px solid green; 
+}
+
+#tweetPage, #statistics, #initialPage {
+    width: 100vw;
+    height: 100vh;
+}
+
+#tweetPage, #statistics {
+    background-color: #1DA1F2;
+    color: #ffffff;
+    align-items: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    display: none;
+}
+
+.insideSectionWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 5vw;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    width: 80vw;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.center-flex {
+    
+}
+

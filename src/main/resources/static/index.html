@@ -2,56 +2,91 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/style.css">
         <title>Guess The Author Game</title>
     </head>
 
     <body>
+        <!-- style="display: none;" -->
         <div id="initialPage">
-            <h1>Hey! Choose Twitter usernames you want to play with!</h1>
-
-            <label for="username1">First Username: </label>
-            <input type="text" name="firstUsername" id="username1" ><br>
-
-
-
-            <label for="username2">Second Username: </label>
-            <input type="text" name="secondUsername" id="username2"><br>
-
-            <button onclick="startGame()">Start Playing!</button>
+            <div class="userNames">
+                <div class="leftPane">
+                    <h1>Guess the Tweet</h1>
+                </div>
+                <div class="rightPane">
+                    <h2>Choose Twitter accounts you want to play with:</h2>
+                    <input type="text" placeholder="First Username" name="firstUsername" id="username1" class="inputBox" value="elonmusk">
+                    <br />
+                    <input type="text" placeholder="Second Username" name="secondUsername" id="username2" class="inputBox" value="kanyewest">
+                    <br />
+                    <button onclick="startGame()">Start</button>
+                    <br />
+                    <a href="https://en.wikipedia.org/wiki/List_of_most-followed_Twitter_accounts" target="_blank">Suggestions</a>
+                </div>
+            </div>
         </div>
 
 
+        <!-- <div id="tweetPage" style="display: none;"> -->
+        <div id="tweetPage">
+            <div class="insideSectionWrapper">
 
-        <div id="tweetPage" hidden>
-            <p id="placeForTweetText"></p>
-            <button id="answer1" onclick=""></button>
-            <button id="answer2" onclick=""></button>
+                <h1>Who posted this tweet?</h1>
 
-            <div id="resultsForThisTweet">
-                <div id="correct" hidden>
-                    <h2 >Correct!</h2>
-                    <button onclick="playAgain()">"Play More!"</button>
-                    <button onclick="showStatistics()">"End the game!"</button>
+                <p id="placeForTweetText">"Sample Text for debug purposes"</p>
+
+
+                <div id="choices">
+                    <button id="answer1" style="width: 10vw;" onclick="">Sample Choice 1</button>
+                    <button id="answer2" style="width: 10vw;" onclick="">Sample Choice 2</button>
                 </div>
 
-                <div id="incorrect" hidden>
-                    <h2>Sorry, incorrect!</h2>
-                    <button onclick="playAgain()">"Play More!"</button>
-                    <button onclick="showStatistics()">"End the game!"</button>
+    
+                <div id="resultsForThisTweet" >
+                    <div id="correct" style="display: flex;
+                                             flex-direction: column; 
+                                             justify-content: center; 
+                                             align-items: center; 
+                                             display: none;">
+                        <h2 id="correctMessage">Correct! </h2>
+                        <div style="display: flex;
+                                    flex-direction: row; 
+                                    justify-content: center; 
+                                    align-items: center;">
+                            <button onclick="playAgain()">Play More!</button>
+                            <button onclick="showStatistics()">End the game!</button>
+                        </div>
+                        
+                    </div>
+    
+                    <div id="incorrect" style="display: flex;
+                                             flex-direction: column; 
+                                             justify-content: center; 
+                                             align-items: center; 
+                                             display: none;">
+                        <h2 id="incorrectMessage">Sorry, incorrect!</h2>
+                        <div style="display: flex;
+                                    flex-direction: row; 
+                                    justify-content: center; 
+                                    align-items: center;">
+                            <button onclick="playAgain()">"Play More!"</button>
+                            <button onclick="showStatistics()">"End the game!"</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
 
 
-
-
-
-        <div id="statistics" hidden>
-            <h1 id="placeForStatistics"></h1>
+        <div id="statistics" >
+            <div class="insideSectionWrapper">
+                <h1 id="placeForStatistics">Sample Statistics text</h1>
+                <a href="/">
+                    <button>Go back to Main page!</button>
+                </a>
+            </div>
         </div>
-
-
 
         <script src="/js/index.js"></script>
     </body>
