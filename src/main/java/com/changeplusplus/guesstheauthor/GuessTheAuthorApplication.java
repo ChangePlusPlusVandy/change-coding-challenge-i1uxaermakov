@@ -13,6 +13,9 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
+// The main class of the project, where the application is started
+// The two beans (tweetsForOneGame and statistics) are initialized for and
+// tied to every session
 @SpringBootApplication
 @EntityScan(basePackages = "com.changeplusplus.guesstheauthor")
 public class GuessTheAuthorApplication {

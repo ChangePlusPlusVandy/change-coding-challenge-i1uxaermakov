@@ -1,4 +1,25 @@
+
+
+
+
 # Change++ 2020 Coding Challenge
+
+## Additional information about running the program
+There are three ways to run the program:
+1. Download the project into IntelliJ IDEA and run from the IDE
+2. Download the project, compile it into a jar, and run the jar from the command line
+3. Download the jar I compiled for you from [here](https://drive.google.com/file/d/1Lle1l8ELjA8A7ci1KRy7-qw5LkABw53_/view?usp=sharing) and run it using command line
+The command you will need is `java -jar path-to-the-jar-file-and-name`, for example `java -jar JarExample.jar`
+
+
+The application will run on `localhost:8080`.
+
+The overview of the workflow of the application can be found in `workflowExplanation.md`.
+
+Comments are available both in Java files and Javascript file.
+
+# Problem Statement
+
 ## Before You Begin
 
 Congrats!! You have been selected to engage in the next step of the Change++ interview process. The next step in our application process is completing the following coding project. As we are unable to offer interviews to every applicant, we will use this challenge to evaluate a number of criteria including technical skills and commitment to Change++. We expect this to take between 2-6 hours depending on experience level and technical skills. We recognize that you are all busy, but as a member of a Change++ team it is expected that you will dedicate 4-6 hours every week working on your project; therefore, we believe this is a reasonable timeframe.

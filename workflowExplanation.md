@@ -1,0 +1,5 @@
+ ## Overview of the workflow of the game:
+ 1. When a user tries to access the root url of the server (`localhost:8080/`), they receive index.html from the static folder.
+ 2. When the user selects the usernames to play the game with, they send them to `/startGame` endpoint. Next, posts from the two accounts are downloaded and posts with links/mentions and retweets are removed. Finally, the user gets the first tweet to play with as a response.
+ 3. When a user makes a guess, the correctness of the guess is checked on the frontend side and depending on the correctness, a request is sent either to `/lastGuessWasCorrect` or `/lastGuessWasIncorrect` to update the statistics for the current httpSession
+ 4. Next, the user is given a choice between continuing to play and ending the game. If they decide to keep playing, they receive new tweets by accessing `/playAnotherRound` endpoint. If they chose to stop, statistics about their performance will be collected from `/statistics` endpoint and presented to the user.

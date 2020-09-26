@@ -8,11 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-
+// The class used to store the tweets for the current game
 public class TweetsForOneGame {
     private List<Status> tweetsFromUsername1;
     private List<Status> tweetsFromUsername2;
 
+    // Method used to obtain a random tweet from the tweets downloaded
     public Status getRandomTweet() {
         Random rand = new Random();
         int whatUsernameToSelect = rand.nextInt(2) + 1;
@@ -27,6 +28,7 @@ public class TweetsForOneGame {
         }
     }
 
+    // Method used to download first 200 pages of tweets for both usernames
     public void initializeTweetsLists(String username1, String username2) throws TwitterException {
         TwitterFactory twitterFactory = new TwitterFactory();
         Twitter twitterInstance = twitterFactory.getInstance();
@@ -42,7 +44,8 @@ public class TweetsForOneGame {
 
 
 
-    // removing any links or mentions
+    // The method used to remove the posts if they are a retweet, a reply to
+    // another post, or contain a link
     private void removeRepliesAndTweetsWithLinks() {
         tweetsFromUsername1.removeIf(status ->
                 status.getInReplyToScreenName() != null || status.getText().contains("http") || status.isRetweet());

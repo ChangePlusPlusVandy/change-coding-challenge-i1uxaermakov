@@ -1,9 +1,7 @@
 package com.changeplusplus.guesstheauthor.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-import java.io.Serializable;
-
+// The class used to hold statistics about the games played in the current session
+// The methods and fields in the class are self-explanatory
 public class StatisticsForOneGame {
     private long overallAttempts;
     private long correctAttempts;

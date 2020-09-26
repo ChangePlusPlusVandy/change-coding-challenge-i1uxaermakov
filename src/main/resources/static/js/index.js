@@ -1,10 +1,11 @@
 
-
+// global variable that holds information about the tween the user is playing with right now
 let currentTweetOnPage;
 
 
 
-
+// The method used to start the game: send the two usernames to backend and
+// obtain the first tweet to play with
 const startGame = function() {
     const username1 = document.getElementById("username1").value;
     const username2 = document.getElementById("username2").value;
@@ -22,9 +23,7 @@ const startGame = function() {
             console.log(currentTweetOnPage.text)
             document.getElementById("placeForTweetText").innerHTML = "\"" + currentTweetOnPage.text + "\"";
             document.getElementById("answer1").innerHTML = username1;
-            document.getElementById("answer1").addEventListener("click", onClickFunctionForButton1)
             document.getElementById("answer2").innerHTML = username2;
-            document.getElementById("answer2").addEventListener("click", onClickFunctionForButton2)
 
             document.getElementById("initialPage").style.display = "none";
             document.getElementById("tweetPage").style.display = "initial";
@@ -37,23 +36,25 @@ const startGame = function() {
 
 
 
-
-
+// Variables used to identify what option the user chose
 let firstChoiceClicked = false
 let secondChoiceClicked = false
 
-const onClickFunctionForButton1 = async function() {
+
+// Methods used to update the variables above with the purpose of identification of the option the user chose
+document.getElementById("answer1").addEventListener("click",  function() {
     firstChoiceClicked = true;
     makeAGuessAndCheckCorrectness();
-}
+})
 
-const onClickFunctionForButton2 = function() {
+document.getElementById("answer2").addEventListener("click", function() {
     secondChoiceClicked = true;
     makeAGuessAndCheckCorrectness();
-}
+})
 
 
-
+// This method is called every time the user makes a guess. It shows whether
+// the user was correct in their guess and prompts to either continue playing or end the game
 const makeAGuessAndCheckCorrectness = function() {
     const username1 = document.getElementById("username1").value;
     const username2 = document.getElementById("username2").value;
@@ -73,6 +74,7 @@ const makeAGuessAndCheckCorrectness = function() {
     }
     document.getElementById("choices").style.display = "none";
 
+    // checking if user's guess was correct
     if(usernameChosen == currentTweetOnPage.user.screenName) {
         document.getElementById("correct").style.display = "initial";
         document.getElementById("correctMessage").innerHTML = "Correct! It was a post by @" + usernameChosen;
@@ -101,7 +103,7 @@ const makeAGuessAndCheckCorrectness = function() {
 }
 
 
-
+// The method used to obtain a new tweet and update the data in case the user wants to continue playing
 const playAgain = function() {
     document.getElementById("incorrect").style.display = "none";
     document.getElementById("correct").style.display = "none";
@@ -129,7 +131,7 @@ const playAgain = function() {
 
 
 
-
+// The method used to display final statistics about the game session
 const showStatistics = function() {
 
     fetch('/statistics', {
