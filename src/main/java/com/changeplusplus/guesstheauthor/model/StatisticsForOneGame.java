@@ -1,11 +1,17 @@
 package com.changeplusplus.guesstheauthor.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+import java.io.Serializable;
 
 public class StatisticsForOneGame {
-    private int overallAttempts = 0;
-    private int correctAttempts = 0;
+    private long overallAttempts;
+    private long correctAttempts;
+
+    public StatisticsForOneGame(long overallAttempts, long correctAttempts) {
+        this.overallAttempts = overallAttempts;
+        this.correctAttempts = correctAttempts;
+    }
 
     public void incrementOverallAttempts() {
         overallAttempts++;
@@ -15,11 +21,22 @@ public class StatisticsForOneGame {
         correctAttempts++;
     }
 
-    public int getOverallAttempts() {
+    public long getOverallAttempts() {
         return overallAttempts;
     }
 
-    public int getCorrectAttempts() {
+    public long getCorrectAttempts() {
         return correctAttempts;
     }
+
+
+    public void setOverallAttempts(long overallAttempts) {
+        this.overallAttempts = overallAttempts;
+    }
+
+    public void setCorrectAttempts(long correctAttempts) {
+        this.correctAttempts = correctAttempts;
+    }
+
+
 }

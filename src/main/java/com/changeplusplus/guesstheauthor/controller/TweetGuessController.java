@@ -17,11 +17,6 @@ public class TweetGuessController {
     @Autowired
     private StatisticsForOneGame statistics;
 
-//    @GetMapping("/")
-//    public String getInitialPage() {
-//        return "redirect:/static/index.html";
-//    }
-
 
     @PostMapping("/startGame")
     public Status selectTwoAccountsAndPlay(@RequestParam String username1,
@@ -37,19 +32,50 @@ public class TweetGuessController {
         return tweetsForOneGame.getRandomTweet();
     }
 
-    @PostMapping("/MakeAGuess")
-    public boolean guessAndShowCorrectAnswer(@RequestParam String usernameChosen, @RequestParam long tweetId) {
+
+    @GetMapping("/lastGuessWasCorrect")
+    public void updateStatisticsWithCorrectGuess() {
         statistics.incrementOverallAttempts();
-        if (tweetsForOneGame.isGuessValid(usernameChosen, tweetId)) {
-            statistics.incrementCorrectAttempts();
-            return true;
-        }
-        return false;
+        statistics.incrementCorrectAttempts();
     }
 
 
+    @GetMapping("/lastGuessWasIncorrect")
+    public void updateStatisticsWithIncorrectGuess() {
+        statistics.incrementOverallAttempts();
+    }
+
+
+
+
     @GetMapping("/statistics")
-    public StatisticsForOneGame getStatisticsAndEndGame() {
-        return statistics;
+    public TemporaryStatisticsHolder getStatisticsAndEndGame() {
+        return new TemporaryStatisticsHolder(statistics);
+    }
+
+    class TemporaryStatisticsHolder {
+        private long overallAttempts;
+        private long correctAttempts;
+
+        public TemporaryStatisticsHolder(StatisticsForOneGame statisticsForOneGame) {
+            overallAttempts = statisticsForOneGame.getOverallAttempts();
+            correctAttempts = statisticsForOneGame.getCorrectAttempts();
+        }
+
+        public long getOverallAttempts() {
+            return overallAttempts;
+        }
+
+        public void setOverallAttempts(long overallAttempts) {
+            this.overallAttempts = overallAttempts;
+        }
+
+        public long getCorrectAttempts() {
+            return correctAttempts;
+        }
+
+        public void setCorrectAttempts(long correctAttempts) {
+            this.correctAttempts = correctAttempts;
+        }
     }
 }

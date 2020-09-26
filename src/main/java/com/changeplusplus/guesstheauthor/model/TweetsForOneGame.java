@@ -41,50 +41,12 @@ public class TweetsForOneGame {
     }
 
 
-    public boolean isGuessValid(String guessedUsername, long tweetId) {
-        for(Status tweet: tweetsFromUsername1) {
-            if(tweet.getId() == tweetId) {
-                if(tweet.getUser().getScreenName() == guessedUsername) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-        }
 
-        for(Status tweet: tweetsFromUsername2) {
-            if(tweet.getId() == tweetId) {
-                if(tweet.getUser().getScreenName() == guessedUsername) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    // removing any links
+    // removing any links or mentions
     private void removeRepliesAndTweetsWithLinks() {
-        Iterator<Status> itr1 = tweetsFromUsername1.iterator();
-        while (itr1.hasNext())
-        {
-            Status status = itr1.next();
-            if (status.getInReplyToScreenName() != null || status.getText().contains("http") || status.isRetweet()) {
-                itr1.remove();
-            }
-        }
-
-        Iterator<Status> itr2 = tweetsFromUsername2.iterator();
-        while (itr2.hasNext())
-        {
-            Status status = itr2.next();
-            if (status.getInReplyToScreenName() != null || status.getText().contains("http") || status.isRetweet()) {
-                itr2.remove();
-            }
-        }
+        tweetsFromUsername1.removeIf(status ->
+                status.getInReplyToScreenName() != null || status.getText().contains("http") || status.isRetweet());
+        tweetsFromUsername2.removeIf(status ->
+                status.getInReplyToScreenName() != null || status.getText().contains("http") || status.isRetweet());
     }
 }

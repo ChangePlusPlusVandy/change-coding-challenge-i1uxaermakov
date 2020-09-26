@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Guess The Author Game</title>
@@ -7,17 +7,22 @@
 
     <body>
         <div id="initialPage">
-            <input type="text" id="username1">
-            <input type="text" id="username2">
+            <h1>Hey! Choose Twitter usernames you want to play with!</h1>
+
+            <label for="username1">First Username: </label>
+            <input type="text" name="firstUsername" id="username1" ><br>
+
+
+
+            <label for="username2">Second Username: </label>
+            <input type="text" name="secondUsername" id="username2"><br>
+
             <button onclick="startGame()">Start Playing!</button>
         </div>
 
 
 
-
-
-
-        <div id="tweetPage" hidden  tweetLongId="">
+        <div id="tweetPage" hidden>
             <p id="placeForTweetText"></p>
             <button id="answer1" onclick=""></button>
             <button id="answer2" onclick=""></button>
@@ -43,7 +48,7 @@
 
 
         <div id="statistics" hidden>
-            <p id="placeForStatistics"></p>
+            <h1 id="placeForStatistics"></h1>
         </div>
 
 

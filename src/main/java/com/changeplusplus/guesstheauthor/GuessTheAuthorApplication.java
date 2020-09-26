@@ -40,6 +40,6 @@ public class GuessTheAuthorApplication {
 			value = WebApplicationContext.SCOPE_SESSION,
 			proxyMode = ScopedProxyMode.TARGET_CLASS)
 	public StatisticsForOneGame statistics() {
-		return new StatisticsForOneGame();
+		return new StatisticsForOneGame(0,0);
 	}
 }
