@@ -1,25 +1,55 @@
 package com.changeplusplus.guesstheauthor.controller;
 
 
+import com.changeplusplus.guesstheauthor.model.StatisticsForOneGame;
+import com.changeplusplus.guesstheauthor.model.TweetsForOneGame;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import twitter4j.*;
+
 
 @RestController
-//@RequestMapping("/api/polls")
 public class TweetGuessController {
 
-    @GetMapping("/")
-    public String getInitialPage() {
-        return "";
+    @Autowired
+    private TweetsForOneGame tweetsForOneGame;
+
+    @Autowired
+    private StatisticsForOneGame statistics;
+
+//    @GetMapping("/")
+//    public String getInitialPage() {
+//        return "redirect:/static/index.html";
+//    }
+
+
+    @PostMapping("/startGame")
+    public Status selectTwoAccountsAndPlay(@RequestParam String username1,
+                                           @RequestParam String username2) throws TwitterException {
+        tweetsForOneGame.initializeTweetsLists(username1, username2);
+
+        return tweetsForOneGame.getRandomTweet();
     }
 
-    @PostMapping("/")
-    public String selectTwoAccountsAndPlay(@RequestParam String username1, @RequestParam String username2) {
-        return "";
+
+    @GetMapping("/playAnotherRound")
+    public Status playAnotherRound() {
+        return tweetsForOneGame.getRandomTweet();
     }
 
-    @PostMapping("/guess")
-    public String guessAndShowCorrectAnswer(@RequestParam String name) {
-        return "";
+    @PostMapping("/MakeAGuess")
+    public boolean guessAndShowCorrectAnswer(@RequestParam String usernameChosen, @RequestParam long tweetId) {
+        statistics.incrementOverallAttempts();
+        if (tweetsForOneGame.isGuessValid(usernameChosen, tweetId)) {
+            statistics.incrementCorrectAttempts();
+            return true;
+        }
+        return false;
     }
 
+
+    @GetMapping("/statistics")
+    public StatisticsForOneGame getStatisticsAndEndGame() {
+        return statistics;
+    }
 }
